@@ -40,7 +40,8 @@ public class CodeManager {
             openContent(titleSlug, project, false);
         }
 
-        String filePath = PersistentConfig.getInstance().getTempFilePath() + VelocityUtils.convert(config.getCustomFileName(), question) + codeTypeEnum.getSuffix();
+        String fileName = VelocityUtils.convert(config.getCustomFileName(), question);
+        String filePath = PersistentConfig.getInstance().getTempFilePath() + fileName + File.separator + fileName + codeTypeEnum.getSuffix();
 
         File file = new File(filePath);
         BiConsumer<LeetcodeEditor, String> fillPath = (e, s) -> e.setPath(s);
@@ -68,7 +69,8 @@ public class CodeManager {
             return;
         }
 
-        String filePath = PersistentConfig.getInstance().getTempFilePath() + Constant.DOC_CONTENT + VelocityUtils.convert(config.getCustomFileName(), question) + ".md";
+        String fileName = VelocityUtils.convert(config.getCustomFileName(), question);
+        String filePath = PersistentConfig.getInstance().getTempFilePath() + fileName + File.separator + fileName + ".md";
 
         File file = new File(filePath);
         BiConsumer<LeetcodeEditor, String> fillPath = (e, s) -> e.setContentPath(s);
