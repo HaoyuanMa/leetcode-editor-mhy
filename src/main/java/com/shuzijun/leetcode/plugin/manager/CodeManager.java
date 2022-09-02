@@ -166,7 +166,10 @@ public class CodeManager {
             MessageUtils.getInstance(project).showWarnMsg("", PropertiesUtils.getInfo("login.not"));
             return null;
         }
-        String filePath = PersistentConfig.getInstance().getTempFilePath() + VelocityUtils.convert(config.getCustomFileName(), question) + codeTypeEnum.getSuffix();
+        String fileName = VelocityUtils.convert(config.getCustomFileName(), question);
+        String filePath = PersistentConfig.getInstance().getTempFilePath() + fileName + File.separator + fileName + codeTypeEnum.getSuffix();
+
+        //String filePath = PersistentConfig.getInstance().getTempFilePath() + VelocityUtils.convert(config.getCustomFileName(), question) + codeTypeEnum.getSuffix();
         File file = new File(filePath);
         if (!file.exists()) {
             MessageUtils.getInstance(project).showWarnMsg("", PropertiesUtils.getInfo("request.code"));
